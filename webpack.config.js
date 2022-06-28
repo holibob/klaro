@@ -10,8 +10,8 @@ const NO_MINIFY_CSS = process.env.NO_MINIFY_CSS !== undefined;
 const APP_DEV_MODE = APP_ENV === 'dev' && process.env.APP_DEV_MODE;
 const STYLE_FILES = /\.(sa|sc|c)ss$/;
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-    .BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin =
+    require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 function withEnvSourcemap(loader) {
     return APP_ENV === 'dev' ? loader + '?sourceMap' : loader;
@@ -21,6 +21,7 @@ let config = {
     mode: 'development',
     target: 'web',
     context: SRC_DIR,
+    devtool: 'source-map',
     resolve: {
         symlinks: false,
         extensions: ['.jsx', '.js'],
